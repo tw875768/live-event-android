@@ -2,6 +2,9 @@
 
 A sample Live Event utility app to help your participants to follow what's happening.
 
+![Screens from the app](screens.png)
+A sample from Qcon Sao Paulo
+
 ## Features
 
 * Event hashtag timeline
