@@ -269,7 +269,7 @@ public class MainActivity extends ActionBarActivity {
     private void follow(String userHandle) {
         Crashlytics.log("Main: user going to follow @" + userHandle);
         MyTwitterApiClient mtac = new MyTwitterApiClient(TwitterCore.getInstance().getSessionManager().getActiveSession());
-        mtac.getFriendshipsService().create(userHandle, null, true, new Callback<User>() {
+        mtac.getFriendshipsService().create(userHandle, null, false, new Callback<User>() {
             @Override
             public void success(Result<User> result) {
                 Crashlytics.log("Main: user followed @" + result.data.screenName);
