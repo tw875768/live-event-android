@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">#LiveEvent</string>
+    <string name="instructions">Peça para seu amigo escanear esse QR code com esta app.</string>
+    <string name="menu_create_tweet">Criar tweet</string>
+    <string name="menu_follow">Seguir via QR code</string>
+    <string name="menu_share_handle">Compartilhar seu usuário</string>
+    <string name="menu_sign_out">Deslogar</string>
+    <string name="message">Escaneie para seguir</string>
+    <string name="title_activity_share_handle">Compartilhar usuário</string>
+    <string name="toast_no_new_tweets">Você já está no tweet mais recente</string>
+    <string name="toast_retrieve_tweets_error">Falha ao carregar tweets, tente novamente</string>
+    <string name="toast_follow_user_error">Erro ao tentar seguir o usuário, tente novamente</string>
+    <string name="toast_follow_user_success">Agora você está seguindo </string>
+    <string name="toast_sign_out">Usuário deslogado com sucesso</string>
+    <string name="menu_account_to_follow">Seguir</string>
+    <string name="account_to_follow">TwitterDevBr</string>
+    <string name="scan_prompt">O QR Code pode ser encontrado no crachá da conferência ou na opção "Compartilhar usuario" nesta app.\nEscaneie o QR code para seguir alguém.</string>
+    <string name="menu_about">Sobre</string>
+    <string name="title_activity_about">Sobre</string>
+    <string name="learn_more">Saiba mais em get.fabric.io</string>
+    <string name="app_built_with_fabric">Essa app foi desenvolvida com</string>
+    <string name="loading">Carregando...</string>
+</resources>
