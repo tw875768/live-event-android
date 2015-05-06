@@ -17,9 +17,7 @@ package com.twitter.dpr.event;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,33 +28,21 @@ import com.crashlytics.android.Crashlytics;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.twitter.sdk.android.Twitter;
-import com.twitter.sdk.android.core.AppSession;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
-import com.twitter.sdk.android.core.TwitterApiClient;
 import com.twitter.sdk.android.core.TwitterCore;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
-import com.twitter.sdk.android.core.models.Search;
-import com.twitter.sdk.android.core.models.Tweet;
 import com.twitter.sdk.android.core.models.User;
 import com.twitter.sdk.android.tweetcomposer.TweetComposer;
-import com.twitter.sdk.android.tweetui.TweetViewAdapter;
-
-import java.util.List;
+import com.twitter.sdk.android.tweetui.SearchTimeline;
+import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
 
 public class MainActivity extends ActionBarActivity {
 
     public static final String USER_HANDLE_EXTRA = "user_handle_extra";
     private TwitterLoginButton loginButton;
-    private SwipeRefreshLayout mSwipeRefreshLayout;
-    private TweetViewAdapter adapter;
-    private long maxId;
-    private long sinceId;
-
-    private static final int SEARCH_COUNT = 50;
-    private static final String SEARCH_RESULT_TYPE = "recent";
     private String SEARCH_QUERY;
 
     @Override
@@ -72,6 +58,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void setUpLoginButton() {
+
         loginButton = (TwitterLoginButton) findViewById(R.id.twitter_login_button);
         loginButton.setCallback(new Callback<TwitterSession>() {
             @Override
@@ -87,87 +74,17 @@ public class MainActivity extends ActionBarActivity {
                 Crashlytics.logException(exception);
             }
         });
+
     }
 
     private void setUpTimeline() {
-        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
-        adapter = new TweetViewAdapter(this);
+        SearchTimeline searchTimeline = new SearchTimeline.Builder().query(SEARCH_QUERY).build();
+
+        final TweetTimelineListAdapter timelineAdapter = new TweetTimelineListAdapter(this, searchTimeline);
+
         ListView timelineView = (ListView) findViewById(R.id.event_timeline);
         timelineView.setEmptyView(findViewById(R.id.empty_timeline));
-        timelineView.setAdapter(adapter);
-
-        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                loadTweets(false);
-                Crashlytics.log("Main: User Swiped to Refresh tweets");
-            }
-        });
-
-        setupAuth();
-    }
-
-    private void setupAuth() {
-        final App app = (App) getApplication();
-        if (app.getGuestAppSession() == null) {
-            TwitterCore.getInstance().logInGuest(new Callback<AppSession>() {
-                @Override
-                public void success(Result<AppSession> result) {
-                    Crashlytics.log("Main: New guest key generated");
-                    app.setGuestAppSession(result.data);
-                    loadTweets(true);
-                }
-
-                @Override
-                public void failure(TwitterException e) {
-                    Crashlytics.logException(e);
-                }
-            });
-        } else {
-            Crashlytics.log("Main: Already have a guest auth key");
-            loadTweets(true);
-        }
-    }
-
-    private void loadTweets(final boolean append) {
-        final App app = (App) getApplication();
-
-        Crashlytics.setLong("MOST_RECENT_TWEET_ID", sinceId);
-        Crashlytics.setLong("OLDEST_TWEET_ID", maxId);
-
-        TwitterApiClient tac = TwitterCore.getInstance().getApiClient(app.getGuestAppSession());
-        tac.getSearchService().tweets(SEARCH_QUERY, null, null, null, SEARCH_RESULT_TYPE, SEARCH_COUNT, null, (append ? 0L : sinceId),
-                (append ? maxId : 0L), true, new Callback<Search>() {
-                    @Override
-                    public void success(Result<Search> result) {
-                        mSwipeRefreshLayout.setRefreshing(false);
-                        final List<Tweet> tweets = result.data.tweets;
-                        if (append) {
-                            adapter.getTweets().addAll(tweets);
-                        } else {
-                            adapter.getTweets().addAll(0, tweets);
-                        }
-                        adapter.notifyDataSetChanged();
-                        if (tweets.size() > 0) {
-                            maxId = tweets.get(tweets.size() - 1).id - 1;
-                            sinceId = tweets.get(0).id;
-                        } else {
-                            Toast.makeText(MainActivity.this,
-                                    getResources().getString(R.string.toast_no_new_tweets),
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                        Crashlytics.log("Main: loadTweets");
-                    }
-
-                    @Override
-                    public void failure(TwitterException e) {
-                        mSwipeRefreshLayout.setRefreshing(false);
-                        Crashlytics.logException(e);
-                        Toast.makeText(MainActivity.this,
-                                getResources().getString(R.string.toast_retrieve_tweets_error),
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
+        timelineView.setAdapter(timelineAdapter);
     }
 
     @Override
@@ -223,6 +140,7 @@ public class MainActivity extends ActionBarActivity {
             item.setVisible(false);
             loginButton.setVisibility(View.VISIBLE);
         }
+
     }
 
     @Override
