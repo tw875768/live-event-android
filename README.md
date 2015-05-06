@@ -24,10 +24,9 @@ This app uses the following Fabric features:
     * Log
     * Beta
 * Twitter Kit
-    * Guest Authentication
     * TweetComposer
     * Sign in with Twitter
-    * Native embedded timelines
+    * Search Timeline
     * Twitter API calls
     * Twitter API client extension
 * Answers
