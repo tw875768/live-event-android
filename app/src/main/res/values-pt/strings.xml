@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">#LiveEvent</string>
+    <string name="app_name">#TwitterFlock</string>
     <string name="instructions">Peça para seu amigo escanear esse QR code com esta app.</string>
     <string name="menu_create_tweet">Criar tweet</string>
     <string name="menu_follow">Seguir via QR code</string>
