@@ -2,7 +2,7 @@
 
 A sample Live Event utility app to help your participants to follow what's happening.
 
-![Screens from the app](screens.png)
+![Screens from the app](screenshot.png)
 A sample from Qcon Sao Paulo
 
 ## Features
