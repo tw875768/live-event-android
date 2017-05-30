@@ -1,6 +1,6 @@
 # Live Event Android
 
-A sample Live Event utility app to help participants to follow what's happening.
+A sample Android app using Twitter Kit to help participants follow what's happening at an event.
 
 ![Screens from the app](screenshot.png)
 
@@ -35,17 +35,17 @@ If you want to run the app locally, do the following:
 5. Customize the `strings.xml` file with your event hashtags and search criteria
 5. Run it
 
-See [how to integrate the SDK](https://dev.twitter.com/twitterkit/android/integrate) if you need more help.
+See [how to integrate the SDK](https://dev.twitter.com/twitterkit/android/installation) if you need more help.
 
 ## Get support
 
-If you need support to build the app or to understand any part of the code, let us know. Post your question in the [Twitter Community](https://twittercommunity.com/c/publisher/twitter) forum.
+If you need support to build the app or to understand any part of the code, let us know. Post your question in the [Twitter Developer Community](https://twittercommunity.com/c/publisher/twitter) forum.
 
 ## Contributing
 
 The goal of this project is to be an example for Twitter Kit and we strive to keep it simple. We definitely welcome improvements and fixes, but we may not merge every pull request suggested by the community.
 
-The rules for contributing are available at `CONTRIBUTING.md` file.
+The rules for contributing are available in the `CONTRIBUTING.md` file.
 
 ## Contributors
 
