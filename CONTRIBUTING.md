@@ -1,6 +1,6 @@
 # Contributing to Live Event App Android
 
-Looking to contribute something to the Cannonball? Here's how you can help.
+Looking to contribute something to the app? Here's how you can help.
 
 ## Bugs reports
 
@@ -20,7 +20,7 @@ Guidelines for bug reports:
 
 4. Please try to be as detailed as possible in your report. Include specific
    information about the environment - operating system and version, browser
-   and version, version of Cannonball - and steps required to reproduce the issue.
+   and version - and steps required to reproduce the issue.
 
 ## Feature requests & contribution enquiries
 
@@ -59,11 +59,11 @@ project:
 5. [Open a Pull Request](http://help.github.com/send-pull-requests/) with a
    clear title and description.
 
-The goal of this project is to be an example for Fabric and we strive to keep it simple. We definitely welcome improvements and fixes, but we may not merge every pull request suggested by the community.
+The goal of this project is to be an example for Twitter Kit and we strive to keep it simple. We definitely welcome improvements and fixes, but we may not merge every pull request suggested by the community.
 
 ## License
 
 By contributing your code,
 
 You agree to license your contribution under the terms of the Apache Public License 2.0
-https://github.com/twitterdev/cannonball-android/blob/master/LICENSE
+https://github.com/twitterdev/live-event-android/blob/master/LICENSE
