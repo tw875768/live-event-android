@@ -1,26 +1,26 @@
 <resources>
     <!-- Configuration: EDIT THE FOLLOWING STRINGS ACCORDING TO YOUR NEEDS-->
-    <string name="app_name">#TwitterFlock</string>
-    <string name="hashtag" translatable="false">#TwitterFlock</string><!-- Hashtag to suggest when composing a tweet -->
-    <string name="twitter_search" translatable="false">#TwitterFlock OR from:twitterdevbr</string> <!-- Learn to build search query at https://dev.twitter.com/rest/public/search -->
+    <string name="app_name">#TapIntoTwitter</string>
+    <string name="hashtag" translatable="false">#TapIntoTwitter</string><!-- Hashtag to suggest when composing a tweet -->
+    <string name="twitter_search" translatable="false">#TapIntoTwitter OR from:twitterdev OR twittercommunity.com</string> <!-- Learn to build search queries at https://dev.twitter.com/rest/public/search -->
     <string name="account_to_follow">TwitterDev</string><!-- Will appear as an option in the actionbar menu -->
     <!-- END OF Configuration (don't forget to set translatable strings in other locales) -->
 
     <!-- Main Activity -->
-    <string name="menu_create_tweet">Create tweet</string>
+    <string name="menu_create_tweet">Create Tweet</string>
     <string name="menu_follow">Follow via QRCode</string>
     <string name="menu_share_handle">Share your handle</string>
     <string name="menu_about">About</string>
     <string name="menu_account_to_follow">Follow</string>
     <string name="menu_sign_out">Sign out</string>
 
-    <string name="toast_retrieve_tweets_error">Failed to load tweets, try again later.</string>
-    <string name="toast_no_new_tweets">You are already at the most recent tweet.</string>
+    <string name="toast_retrieve_tweets_error">Failed to load Tweets, try again later.</string>
+    <string name="toast_no_new_tweets">You are already at the most recent Tweet.</string>
     <string name="toast_follow_user_success">Now you are following</string>
     <string name="toast_follow_user_error">Failed to follow user, try again later.</string>
-    <string name="toast_sign_out">User signed off successfully.</string>
+    <string name="toast_sign_out">User signed out successfully.</string>
 
-    <string name="scan_prompt">The QR Code can be found in the conference badge or the "Share handle" option in this app.\nScan the QR code to follow someone.</string>
+    <string name="scan_prompt">The QR Code can be found in the meetup badge or the "Share handle" option in this app.\nScan the QR code to follow someone.</string>
     <string name="loading">Loading...</string>
 
     <!-- Share Handle Activity -->
@@ -30,7 +30,8 @@
 
     <!-- AboutActivity -->
     <string name="title_activity_about">About</string>
-    <string name="app_built_with_fabric">This app was built with</string>
-    <string name="learn_more">Learn more at get.fabric.io</string>
+    <string name="app_built_with">This app was built using</string>
+    <string name="twitter_kit">Twitter Kit 3.0</string>
+    <string name="learn_more">Learn more at\nhttps://t.co/twitterkit</string>
 
 </resources>

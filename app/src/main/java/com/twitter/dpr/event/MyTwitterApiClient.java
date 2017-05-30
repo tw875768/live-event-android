@@ -18,15 +18,18 @@ package com.twitter.dpr.event;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Session;
 import com.twitter.sdk.android.core.TwitterApiClient;
+import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.models.User;
 
-import retrofit.http.POST;
-import retrofit.http.Query;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.http.Query;
+import retrofit2.http.POST;
 
 public class MyTwitterApiClient extends TwitterApiClient {
 
     public MyTwitterApiClient(Session session) {
-        super(session);
+        super((TwitterSession) session);
     }
 
     public FriendshipsService getFriendshipsService() {
@@ -36,5 +39,5 @@ public class MyTwitterApiClient extends TwitterApiClient {
 
 interface FriendshipsService {
     @POST("/1.1/friendships/create.json")
-    void create(@Query("screen_name") String screenName, @Query("user_id") String id, @Query("follow") boolean follow, Callback<User> cb);
+    Call<User> create(@Query("screen_name") String screenName, @Query("user_id") String id, @Query("follow") boolean follow);
 }

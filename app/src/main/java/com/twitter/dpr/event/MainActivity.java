@@ -24,10 +24,9 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import com.twitter.sdk.android.Twitter;
+
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterCore;
@@ -38,6 +37,8 @@ import com.twitter.sdk.android.core.models.User;
 import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 import com.twitter.sdk.android.tweetui.SearchTimeline;
 import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
+
+import retrofit2.Call;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -64,14 +65,11 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void success(Result<TwitterSession> result) {
                 invalidateOptionsMenu();
-                Crashlytics.log("Main: Sign in with Twitter - User logged: " + result.data.getUserId());
-                Crashlytics.setUserIdentifier("" + result.data.getUserId());
             }
 
             @Override
             public void failure(TwitterException exception) {
                 invalidateOptionsMenu();
-                Crashlytics.logException(exception);
             }
         });
 
@@ -92,9 +90,7 @@ public class MainActivity extends ActionBarActivity {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if(result != null) {
             if(result.getContents() == null) {
-                Crashlytics.log("Main: user cancelled qrcode scan");
             } else {
-                Crashlytics.log("Main: user scanned something");
                 follow(result.getContents());
             }
         } else {
@@ -170,7 +166,6 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void createTweet() {
-        Crashlytics.log("Main: user clicked to create a tweet");
         final TweetComposer.Builder builder =
                 new TweetComposer.Builder(this).text(getApplicationContext().getResources()
                         .getString(R.string.hashtag));
@@ -178,19 +173,17 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void scanToFollow() {
-        Crashlytics.log("Main: user clicked to scan someone to follow");
         IntentIntegrator ii = new IntentIntegrator(this);
         ii.setPrompt(getResources().getString(R.string.scan_prompt));
         ii.initiateScan();
     }
 
     private void follow(String userHandle) {
-        Crashlytics.log("Main: user going to follow @" + userHandle);
         MyTwitterApiClient mtac = new MyTwitterApiClient(TwitterCore.getInstance().getSessionManager().getActiveSession());
-        mtac.getFriendshipsService().create(userHandle, null, false, new Callback<User>() {
+        Call<User> call = mtac.getFriendshipsService().create(userHandle, null, false);
+        call.enqueue(new Callback<User>() {
             @Override
             public void success(Result<User> result) {
-                Crashlytics.log("Main: user followed @" + result.data.screenName);
                 Toast.makeText(MainActivity.this,
                         getResources().getString(R.string.toast_follow_user_success) + " @" + result.data.screenName,
                         Toast.LENGTH_SHORT).show();
@@ -198,7 +191,6 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public void failure(TwitterException e) {
-                Crashlytics.logException(e);
                 Toast.makeText(MainActivity.this,
                         getResources().getString(R.string.toast_follow_user_error),
                         Toast.LENGTH_SHORT).show();
@@ -207,21 +199,18 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void shareHandle() {
-        Crashlytics.log("Main: clicked to share a handle via qrcode");
         final Intent intent = new Intent(this, ShareHandleActivity.class);
         intent.putExtra(USER_HANDLE_EXTRA, TwitterCore.getInstance().getSessionManager().getActiveSession().getUserName());
         startActivity(intent);
     }
 
     private void about() {
-        Crashlytics.log("Main: clicked about");
         final Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
     }
 
     private void signOut() {
-        Crashlytics.log("Main: user signed out");
-        Twitter.getSessionManager().clearActiveSession();
+        TwitterCore.getInstance().getSessionManager().clearActiveSession();
         invalidateOptionsMenu();
         Toast.makeText(MainActivity.this,
                 getResources().getString(R.string.toast_sign_out),

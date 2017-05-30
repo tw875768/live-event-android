@@ -17,31 +17,30 @@ package com.twitter.dpr.event;
 
 import android.app.Application;
 
-import com.crashlytics.android.Crashlytics;
-import com.twitter.sdk.android.Twitter;
-import com.twitter.sdk.android.core.AppSession;
+import com.twitter.sdk.android.core.Twitter;
+import com.twitter.sdk.android.core.GuestSession;
+import com.twitter.sdk.android.core.TwitterConfig;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
-
-import io.fabric.sdk.android.Fabric;
 
 public class App extends Application {
 
     private static final String TWITTER_KEY = BuildConfig.CONSUMER_KEY;
     private static final String TWITTER_SECRET = BuildConfig.CONSUMER_SECRET;
-    public AppSession guestAppSession = null;
+    public GuestSession guestAppSession = null;
 
     @Override
     public void onCreate() {
         super.onCreate();
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
-        Fabric.with(this, new Crashlytics(), new Twitter(authConfig));
+        TwitterConfig config = new TwitterConfig.Builder(this).twitterAuthConfig(authConfig).build();
+        Twitter.initialize(config);
     }
 
-    public AppSession getGuestAppSession() {
+    public GuestSession getGuestAppSession() {
         return guestAppSession;
     }
 
-    public void setGuestAppSession(AppSession guestAppSession) {
+    public void setGuestAppSession(GuestSession guestAppSession) {
         this.guestAppSession = guestAppSession;
     }
 }

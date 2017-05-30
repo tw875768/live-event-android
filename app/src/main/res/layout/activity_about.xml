@@ -8,34 +8,36 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.twitter.dpr.event.AboutActivity">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:src="@mipmap/ic_fabric"
-        android:layout_below="@+id/textView"
-        android:scaleType="fitCenter"
-        android:layout_above="@+id/textView2"
-        android:layout_margin="@dimen/qrcode_margin" />
-
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="98dp"
+        android:text="@string/learn_more"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/app_built_with_fabric"
-        android:id="@+id/textView"
+        android:autoLink="web"
+        android:gravity="center"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/twitter_kit"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_margin="@dimen/qrcode_margin" />
+        android:layout_margin="@dimen/qrcode_margin"
+        android:text="@string/app_built_with"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/learn_more"
-        android:id="@+id/textView2"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="@dimen/qrcode_margin" />
 </RelativeLayout>

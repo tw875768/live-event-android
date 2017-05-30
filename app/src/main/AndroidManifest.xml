@@ -22,10 +22,6 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="c54037a92a2b9e89648440b0ffed41d725021eae" />
-
         <activity
             android:name=".ShareHandleActivity"
             android:label="@string/title_activity_share_handle"

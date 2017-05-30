@@ -25,7 +25,6 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.crashlytics.android.Crashlytics;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
@@ -48,7 +47,6 @@ public class ShareHandleActivity extends ActionBarActivity {
     }
 
     private void setupQrcode() {
-        Crashlytics.setString("QR_CODE_CONTENT", userHandle);
         QRCodeWriter writer = new QRCodeWriter();
         try {
             BitMatrix bitMatrix = writer.encode(userHandle, BarcodeFormat.QR_CODE, 512, 512);
