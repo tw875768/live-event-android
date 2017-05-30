@@ -39,7 +39,7 @@ See [how to integrate the SDK](https://dev.twitter.com/twitterkit/android/integr
 
 ## Get support
 
-If you need support to build the app or to understand any part of the code, let us know. Post your question in the [Twitter Community](https://twittercommunity.com/c/publisher/twitterkit) forum.
+If you need support to build the app or to understand any part of the code, let us know. Post your question in the [Twitter Community](https://twittercommunity.com/c/publisher/twitter) forum.
 
 ## Contributing
 
