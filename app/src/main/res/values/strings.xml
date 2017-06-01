@@ -8,7 +8,7 @@
 
     <!-- Main Activity -->
     <string name="menu_create_tweet">Create Tweet</string>
-    <string name="menu_follow">Follow via QRCode</string>
+    <string name="menu_follow">Follow via QR Code</string>
     <string name="menu_share_handle">Share your handle</string>
     <string name="menu_about">About</string>
     <string name="menu_account_to_follow">Follow</string>

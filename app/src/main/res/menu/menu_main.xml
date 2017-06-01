@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.twitter.dpr.event.MainActivity">
     <item android:id="@+id/action_create_tweet" android:title="@string/menu_create_tweet"
-        app:showAsAction="always"  android:icon="@mipmap/ic_action_content_create" />
+        app:showAsAction="ifRoom"  android:icon="@mipmap/ic_action_content_create" />
 
     <item android:id="@+id/action_follow" android:title="@string/menu_follow"
-        app:showAsAction="always"  android:icon="@mipmap/ic_action_social_person_add" />
+        app:showAsAction="ifRoom"  android:icon="@mipmap/ic_action_social_person_add" />
 
     <item android:id="@+id/action_share_handle" android:title="@string/menu_share_handle"
-        app:showAsAction="always"  android:icon="@mipmap/ic_action_action_assignment_ind" />
+        app:showAsAction="ifRoom"  android:icon="@mipmap/ic_action_action_assignment_ind" />
 
     <item android:id="@+id/action_account_to_follow" android:title="@string/menu_account_to_follow"
         android:orderInCategory="98"  app:showAsAction="never" />
