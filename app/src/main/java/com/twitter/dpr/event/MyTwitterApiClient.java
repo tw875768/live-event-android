@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2015 Twitter Inc and other contributors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,13 +15,11 @@
  */
 package com.twitter.dpr.event;
 
-import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Session;
 import com.twitter.sdk.android.core.TwitterApiClient;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.models.User;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Query;
 import retrofit2.http.POST;

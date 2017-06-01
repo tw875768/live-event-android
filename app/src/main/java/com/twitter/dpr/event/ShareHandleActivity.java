@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2015 Twitter Inc and other contributors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ package com.twitter.dpr.event;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,9 +30,10 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 
-public class ShareHandleActivity extends ActionBarActivity {
+public class ShareHandleActivity extends AppCompatActivity {
 
     private String userHandle;
+    private String profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class ShareHandleActivity extends ActionBarActivity {
         setContentView(R.layout.activity_share_handle);
 
         userHandle = (String) getIntent().getSerializableExtra(MainActivity.USER_HANDLE_EXTRA);
+        profile = "https://twitter.com/" + userHandle;
         Log.i("ShareHandle", "Sharing user: " + userHandle);
 
         setupQrcode();
@@ -49,7 +51,7 @@ public class ShareHandleActivity extends ActionBarActivity {
     private void setupQrcode() {
         QRCodeWriter writer = new QRCodeWriter();
         try {
-            BitMatrix bitMatrix = writer.encode(userHandle, BarcodeFormat.QR_CODE, 512, 512);
+            BitMatrix bitMatrix = writer.encode(profile, BarcodeFormat.QR_CODE, 512, 512);
             int width = bitMatrix.getWidth();
             int height = bitMatrix.getHeight();
             Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);

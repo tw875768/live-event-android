@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2015 Twitter Inc and other contributors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@ package com.twitter.dpr.event;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,7 +40,7 @@ import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
 
 import retrofit2.Call;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     public static final String USER_HANDLE_EXTRA = "user_handle_extra";
     private TwitterLoginButton loginButton;
