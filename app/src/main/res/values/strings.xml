@@ -16,7 +16,7 @@
 
     <string name="toast_retrieve_tweets_error">Failed to load Tweets, try again later.</string>
     <string name="toast_no_new_tweets">You are already at the most recent Tweet.</string>
-    <string name="toast_follow_user_success">Now you are following</string>
+    <string name="toast_follow_user_success">You are now following</string>
     <string name="toast_follow_user_error">Failed to follow user, try again later.</string>
     <string name="toast_sign_out">User signed out successfully.</string>
 
