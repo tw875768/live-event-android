@@ -34,6 +34,7 @@ import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 import com.twitter.sdk.android.core.models.User;
+import com.twitter.sdk.android.tweetcomposer.ComposerActivity;
 import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 import com.twitter.sdk.android.tweetui.SearchTimeline;
 import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
@@ -166,10 +167,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createTweet() {
-        final TweetComposer.Builder builder =
-                new TweetComposer.Builder(this).text(getApplicationContext().getResources()
-                        .getString(R.string.hashtag));
-        builder.show();
+
+        // this block uses the new Twitter Kit 3 native Tweet Composer
+        // that does not require the Twitter app to be installed
+
+        final Intent intent = new ComposerActivity.Builder(this)
+                .session(TwitterCore.getInstance().getSessionManager().getActiveSession())
+                .hashtags(getString(R.string.hashtag))
+                .createIntent();
+        startActivity(intent);
+
+        // to use the richer Composer from the Twitter app, uncomment this block
+        // and remove the five lines above
+        //
+        // final TweetComposer.Builder builder =
+        //        new TweetComposer.Builder(this).text(getApplicationContext().getResources()
+        //                .getString(R.string.hashtag));
+        // builder.show();
+
     }
 
     private void scanToFollow() {
