@@ -24,13 +24,13 @@ import retrofit2.Call;
 import retrofit2.http.Query;
 import retrofit2.http.POST;
 
-public class MyTwitterApiClient extends TwitterApiClient {
+class MyTwitterApiClient extends TwitterApiClient {
 
-    public MyTwitterApiClient(Session session) {
+    MyTwitterApiClient(Session session) {
         super((TwitterSession) session);
     }
 
-    public FriendshipsService getFriendshipsService() {
+    FriendshipsService getFriendshipsService() {
         return getService(FriendshipsService.class);
     }
 }
